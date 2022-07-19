@@ -8,8 +8,9 @@ import java.awt.event.ActionListener;
 
 public class Okno extends JFrame implements ActionListener {
 
-    JLabel A,B,C,Podaj;
-    JTextField tA,tB,tC;
+    JLabel A,B,C,Podaj,Wynik;
+    double a,b,c;
+    JTextField tA,tB,tC,tWynik;
     JButton bOblicz;
     public Okno()
     {
@@ -51,11 +52,26 @@ public class Okno extends JFrame implements ActionListener {
         bOblicz.setBounds(120,100,100,20);
         add(bOblicz);
         bOblicz.addActionListener(this);
+
+        //wynik
+
+        Wynik = new JLabel("Wynik: ");
+        Wynik.setBounds(120,150,50,20);
+        add(Wynik);
+
+        tWynik = new JTextField();
+        tWynik.setBounds(180,150,100,20);
+        add(tWynik);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) //przeciazylismy metode ktora zostala odziedziczona po przez interfejs
     {
+        a = Double.parseDouble(tA.getText());
+        b = Double.parseDouble(tB.getText());
+        c = Double.parseDouble(tC.getText());
+        LogikaPrzycisku test1 = new LogikaPrzycisku(a,b,c);
+        tWynik.setText(test1.Oblicz());
 
     }
 
