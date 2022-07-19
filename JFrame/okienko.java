@@ -8,6 +8,8 @@ import java.util.Date;
 public class okienko extends JFrame implements ActionListener {
 
     JButton bPodajDate,bWyjscie;
+    JLabel lCelcjusz;
+    JTextField tCelcjusz;
     public okienko() //konstruktor bo ogolnie mozna by bylo to zrobic w oddzielnej klasie
     {
         setSize(300,200);
@@ -24,6 +26,14 @@ public class okienko extends JFrame implements ActionListener {
         bWyjscie.setBounds(150,50,100,20);
         add(bWyjscie);
         bWyjscie.addActionListener(this);
+
+        lCelcjusz = new JLabel("Ahmed");
+        lCelcjusz.setBounds(150,100,150,20);
+        add(lCelcjusz);
+
+        tCelcjusz = new JTextField();
+        tCelcjusz.setBounds(200,100,150,20);
+        add(tCelcjusz);
     }
 
 
