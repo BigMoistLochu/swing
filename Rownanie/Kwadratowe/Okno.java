@@ -11,7 +11,7 @@ public class Okno extends JFrame implements ActionListener {
     JLabel A,B,C,Podaj,Wynik;
     double a,b,c;
     JTextField tA,tB,tC,tWynik;
-    JButton bOblicz;
+    JButton bOblicz,bWyjscie;
     public Okno()
     {
         //rozmiar okna glownego
@@ -52,6 +52,11 @@ public class Okno extends JFrame implements ActionListener {
         bOblicz.setBounds(120,100,100,20);
         add(bOblicz);
         bOblicz.addActionListener(this);
+        //wyjscie
+        bWyjscie = new JButton("Wyjscie");
+        bWyjscie.setBounds(230,100,100,20);
+        add(bWyjscie);
+        bWyjscie.addActionListener(this);
 
         //wynik
 
@@ -60,18 +65,34 @@ public class Okno extends JFrame implements ActionListener {
         add(Wynik);
 
         tWynik = new JTextField();
-        tWynik.setBounds(180,150,100,20);
+        tWynik.setBounds(180,150,400,20);
         add(tWynik);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) //przeciazylismy metode ktora zostala odziedziczona po przez interfejs
     {
-        a = Double.parseDouble(tA.getText());
-        b = Double.parseDouble(tB.getText());
-        c = Double.parseDouble(tC.getText());
-        LogikaPrzycisku test1 = new LogikaPrzycisku(a,b,c);
-        tWynik.setText(test1.Oblicz());
+        Object zrodlo = e.getSource();
+        try
+        {
+            if(zrodlo==bOblicz)
+            {
+                a = Double.parseDouble(tA.getText());
+                b = Double.parseDouble(tB.getText());
+                c = Double.parseDouble(tC.getText());
+                LogikaPrzycisku test1 = new LogikaPrzycisku(a,b,c);
+                tWynik.setText(test1.Oblicz());
+            }
+            else
+            {
+                dispose();
+            }
+        }
+        catch(NumberFormatException ex)
+        {
+            tWynik.setText("nie podano liczby!");
+        }
+
 
     }
 
