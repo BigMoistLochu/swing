@@ -51,12 +51,36 @@ public class Okno extends JFrame implements ActionListener {
         bOblicz = new JButton("Oblicz");
         bOblicz.setBounds(120,100,100,20);
         add(bOblicz);
-        bOblicz.addActionListener(this);
+        bOblicz.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try
+                {
+
+                        a = Double.parseDouble(tA.getText());
+                        b = Double.parseDouble(tB.getText());
+                        c = Double.parseDouble(tC.getText());
+                        LogikaPrzycisku test1 = new LogikaPrzycisku(a,b,c);
+                        tWynik.setText(test1.Oblicz());
+
+                }
+                catch(NumberFormatException ex)
+                {
+                    tWynik.setText("nie podano liczby!");
+                }
+            }
+        });
+
         //wyjscie
         bWyjscie = new JButton("Wyjscie");
         bWyjscie.setBounds(230,100,100,20);
         add(bWyjscie);
-        bWyjscie.addActionListener(this);
+        bWyjscie.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
 
         //wynik
 
@@ -69,30 +93,13 @@ public class Okno extends JFrame implements ActionListener {
         add(tWynik);
     }
 
+
+
+
+
     @Override
     public void actionPerformed(ActionEvent e) //przeciazylismy metode ktora zostala odziedziczona po przez interfejs
     {
-        Object zrodlo = e.getSource();
-        try
-        {
-            if(zrodlo==bOblicz)
-            {
-                a = Double.parseDouble(tA.getText());
-                b = Double.parseDouble(tB.getText());
-                c = Double.parseDouble(tC.getText());
-                LogikaPrzycisku test1 = new LogikaPrzycisku(a,b,c);
-                tWynik.setText(test1.Oblicz());
-            }
-            else
-            {
-                dispose();
-            }
-        }
-        catch(NumberFormatException ex)
-        {
-            tWynik.setText("nie podano liczby!");
-        }
-
 
     }
 
