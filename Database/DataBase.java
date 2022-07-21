@@ -1,9 +1,4 @@
 package swing.Database;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.sql.*;
 
 public class DataBase {
@@ -15,7 +10,7 @@ public class DataBase {
         this.name = name;
         this.price = price;
         this.category = category;
-        
+
     }
 
     public void Connect()
@@ -29,7 +24,7 @@ public class DataBase {
         {
             ex.printStackTrace();
         }
-        catch (SQLException ex)
+        catch(SQLException ex)
         {
             ex.printStackTrace();
         }

@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
 
+
 public class Widok extends JFrame {
 
     JLabel lglowne,lnazwa,lcena,lkategoria,lid;
@@ -67,21 +68,30 @@ public class Widok extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String name,price,category;
 
-                name = tnazwa.getText();
-                price = tcena.getText();
-                category = tkategoria.getText();
+                try {
+                    name = tnazwa.getText();
+                    price = tcena.getText();
+                    category = tkategoria.getText();
 
                     //tworzymy obiekt
-                    DataBase polaczenie = new DataBase(name,price,category);
+                    DataBase polaczenie = new DataBase(name, price, category);
                     //metoda ktora sie laczy z baza danych
                     polaczenie.Connect();
                     //metoda ktora dodaje do bazy
                     polaczenie.Add();
-                    JOptionPane.showMessageDialog(null,"Record Addedddddd!!!!");
+                    JOptionPane.showMessageDialog(null, "Record Addedddddd!!!!");
                     tnazwa.setText("");
                     tcena.setText("");
                     tkategoria.setText("");
                     tnazwa.requestFocus();
+                }
+                catch (NullPointerException ex)
+                {
+                    System.out.println("Jakies braki w polach!");
+                }
+
+
+
 
             }
         });
@@ -103,6 +113,13 @@ public class Widok extends JFrame {
         bszukaj.setBounds(190,250,100,20);
         add(bszukaj);
         //action lisiner dla przycisku szukaj
+        bszukaj.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+
+            }
+        });
 
 
 
