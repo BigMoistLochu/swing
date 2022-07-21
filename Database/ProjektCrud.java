@@ -1,35 +1,23 @@
 package swing.Database;
 
+import javax.swing.*;
 import java.sql.*;
 public class ProjektCrud {
 
 
 
     public static void main(String[] args) {
-        Connect();
+        //DataBase polaczenie = new DataBase();
+        //polaczenie.Connect();//aktualnie to nam nie potrzebne XD
+
+        Widok widok = new Widok();
+        widok.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//ustawiamy ze gdy nacisniemy exit to aplikacja sie wylacza
+        widok.setVisible(true);//to jest pokazanie wizualne czyli na naszych oczach sie odpala
 
     }
 
 
 
 
-    public static void Connect()
-    {
-        Connection con;
-        PreparedStatement pst;
 
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost/produkty", "root","");
-            System.out.println("Success");
-        }
-        catch (ClassNotFoundException ex)
-        {
-            ex.printStackTrace();
-        }
-        catch (SQLException ex)
-        {
-            ex.printStackTrace();
-        }
-    }
 }
