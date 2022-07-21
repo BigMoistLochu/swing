@@ -1,6 +1,9 @@
 package swing.Database;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.*;
 
 public class Widok extends JFrame {
 
@@ -59,6 +62,29 @@ public class Widok extends JFrame {
         bdodaj.setBounds(50,250,100,20);
         add(bdodaj);
         //action lisiner dla przycisku Dodaj
+        bdodaj.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String name,price,category;
+
+                name = tnazwa.getText();
+                price = tcena.getText();
+                category = tkategoria.getText();
+
+                    //tworzymy obiekt
+                    DataBase polaczenie = new DataBase(name,price,category);
+                    //metoda ktora sie laczy z baza danych
+                    polaczenie.Connect();
+                    //metoda ktora dodaje do bazy
+                    polaczenie.Add();
+                    JOptionPane.showMessageDialog(null,"Record Addedddddd!!!!");
+                    tnazwa.setText("");
+                    tcena.setText("");
+                    tkategoria.setText("");
+                    tnazwa.requestFocus();
+
+            }
+        });
 
         //przycisk Usun
         busun = new JButton("Usun");
