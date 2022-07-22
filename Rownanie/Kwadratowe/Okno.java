@@ -57,11 +57,15 @@ public class Okno extends JFrame implements ActionListener {
                 try
                 {
 
-                        a = Double.parseDouble(tA.getText());
-                        b = Double.parseDouble(tB.getText());
-                        c = Double.parseDouble(tC.getText());
-                        LogikaPrzycisku test1 = new LogikaPrzycisku(a,b,c);
-                        tWynik.setText(test1.Oblicz());
+                        //a = Double.parseDouble(tA.getText());
+                        //b = Double.parseDouble(tB.getText());
+                        //c = Double.parseDouble(tC.getText());
+                        //LogikaPrzycisku test1 = new LogikaPrzycisku(a,b,c);
+                        //tWynik.setText(test1.Oblicz());
+                    dispose();
+                    Fast zobacz = new Fast();
+                    zobacz.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//ustawiamy ze gdy nacisniemy exit to aplikacja sie wylacza
+                    zobacz.setVisible(true);
 
                 }
                 catch(NumberFormatException ex)

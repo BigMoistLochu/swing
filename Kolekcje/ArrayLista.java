@@ -6,7 +6,7 @@ public class ArrayLista {
     public static void main(String[] args) {
         //zad1
         ArrayList<Integer> liczby = new ArrayList<Integer>();
-        
+
         Random rand = new Random();
         //dodawanie liczb randomowych do arraylisty
         for(int c=0;c<6;c++)
