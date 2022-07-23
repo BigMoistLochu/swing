@@ -4,14 +4,9 @@ import java.sql.*;
 public class DataBase {
     Connection con;
     PreparedStatement pst;
-    String name,price,category,id;
 
-    public DataBase(String name, String price, String category) {
-        this.name = name;
-        this.price = price;
-        this.category = category;
 
-    }
+
 
     public void Connect()
     {
@@ -30,7 +25,7 @@ public class DataBase {
         }
     }
 
-    public void Add()
+    public void Add(String name,String price, String category)
     {
         try {
             pst = con.prepareStatement("insert into products(name,price,category)values(?,?,?)");
@@ -38,11 +33,35 @@ public class DataBase {
             pst.setString(2, price);
             pst.setString(3, category);
             pst.executeUpdate();
+            con.close();
         }
         catch (SQLException e1)
         {
             e1.printStackTrace();
         }
+    }
+
+    public String[] Search(String id)
+    {
+        String[] tablica = new String[3];
+        try {
+            pst = con.prepareStatement("select * from products where id=?");
+            pst.setString(1, id);
+
+            ResultSet rs = pst.executeQuery();
+            if(rs.next()==true)
+            {
+                tablica[0] = rs.getString(1);
+                tablica[1] = rs.getString(2);
+                tablica[2] = rs.getString(3);
+            }
+        }
+        catch (SQLException e1)
+        {
+            e1.printStackTrace();
+        }
+
+        return tablica;
     }
 }
 

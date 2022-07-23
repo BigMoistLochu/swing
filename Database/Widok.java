@@ -74,11 +74,11 @@ public class Widok extends JFrame {
                     category = tkategoria.getText();
 
                     //tworzymy obiekt
-                    DataBase polaczenie = new DataBase(name, price, category);
+                    DataBase polaczenie = new DataBase();
                     //metoda ktora sie laczy z baza danych
                     polaczenie.Connect();
                     //metoda ktora dodaje do bazy
-                    polaczenie.Add();
+                    polaczenie.Add(name, price, category);
                     JOptionPane.showMessageDialog(null, "Record Addedddddd!!!!");
                     tnazwa.setText("");
                     tcena.setText("");
@@ -89,9 +89,6 @@ public class Widok extends JFrame {
                 {
                     System.out.println("Jakies braki w polach!");
                 }
-
-
-
 
             }
         });
@@ -116,8 +113,19 @@ public class Widok extends JFrame {
         bszukaj.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String pid = tid.getText();
 
-
+                //tworzymy obiekt
+                DataBase polaczenie = new DataBase();
+                //metoda ktora sie laczy z baza danych
+                polaczenie.Connect();
+                //metoda ktora szuka z bazy danych
+                //polaczenie.Search(pid);//to bedzie tablica wiec
+                JOptionPane.showMessageDialog(null, "Record Addedddddd!!!!");
+                tnazwa.setText(polaczenie.Search(pid)[0]);
+                tcena.setText(polaczenie.Search(pid)[1]);
+                tkategoria.setText(polaczenie.Search(pid)[2]);
+                tnazwa.requestFocus();
             }
         });
 

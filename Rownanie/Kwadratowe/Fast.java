@@ -6,7 +6,7 @@ public class Fast extends JFrame {
 
     public Fast()
     {
-        setSize(600,600);
+        setSize(400,400);
         setTitle("Nowe Okno!");
     }
 }
